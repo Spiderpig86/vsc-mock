@@ -3,6 +3,7 @@
     "displayName": "vsc-mock",
     "description": "Generate mock form data on the fly.",
     "version": "0.0.1",
+    "homepage":         "https://github.com/Spiderpig86/vsc-mock",
     "publisher": "Spiderpig86",
     "engines": {
         "vscode": "^1.27.2"
@@ -11,14 +12,59 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:mock.basics",
+        "onCommand:mock.text",
+        "onCommand:mock.person",
+        "onCommand:mock.thing",
+        "onCommand:mock.mobile",
+        "onCommand:mock.web",
+        "onCommand:mock.location",
+        "onCommand:mock.time",
+        "onCommand:mock.finance",
+        "onCommand:mock.misc"
     ],
     "main": "./out/extension",
     "contributes": {
         "commands": [
             {
-                "command": "extension.sayHello",
-                "title": "Hello World"
+                "command": "mock.basics",
+                "title": "Mock: Basic Values"
+            },
+            {
+                "command": "mock.text",
+                "title": "Mock: Text"
+            },
+            {
+                "command": "mock.person",
+                "title": "Mock: Person"
+            },
+            {
+                "command": "mock.Thing",
+                "title": "Mock: Thing"
+            },
+            {
+                "command": "mock.mobile",
+                "title": "Mock: Mobile"
+            },
+            {
+                "command": "mock.web",
+                "title": "Mock: Web"
+            },
+            {
+                "command": "mock.location",
+                "title": "Mock: Location"
+            },
+            {
+                "command": "mock.time",
+                "title": "Mock: Time"
+            },
+            {
+                "command": "mock.Finance",
+                "title": "Mock: Finance"
+            },
+            {
+                "command": "mock.misc",
+                "title": "Mock: Misc"
             }
         ]
     },
