@@ -1,7 +1,7 @@
 /**
  * Base interface for categories of random text
  */
-export interface Category {
-    getItemName(): string;
+export interface ICategory {
+    getCategoryName(): string;
     getTypes(): string[];
 }
