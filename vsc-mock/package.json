@@ -3,7 +3,7 @@
     "displayName": "vsc-mock",
     "description": "Generate mock form data on the fly.",
     "version": "0.0.1",
-    "homepage":         "https://github.com/Spiderpig86/vsc-mock",
+    "homepage": "https://github.com/Spiderpig86/vsc-mock",
     "publisher": "Spiderpig86",
     "engines": {
         "vscode": "^1.27.2"
@@ -71,7 +71,7 @@
             "type": "object",
             "title": "vsc-mock",
             "properties": {
-                "faker.locale": {
+                "vscmock.locale": {
                     "type": "string",
                     "default": "en",
                     "description": "Set locale for vsc-mock"
@@ -95,6 +95,7 @@
         "vscode": "^1.1.21"
     },
     "dependencies": {
+        "@types/chance": "^1.0.1",
         "ts-node": "^7.0.1"
     }
 }
