@@ -1,6 +1,21 @@
 'use strict';
 import * as vscode from 'vscode';
 import * as chance from 'chance';
+import * as categories from './categories';
+
+import { ICategory } from './categories/category.interface';
+import { exec } from 'child_process';
+
+// Init options
+const basics = new categories.Basics();
+const finance = new categories.Finance();
+const location = new categories.Finance();
+const misc = new categories.Misc();
+const mobile = new categories.Mobile();
+const person = new categories.Person();
+const text = new categories.Text();
+const thing = new categories.Thing();
+const web = new categories.Web();
 
 /**
  * Initialize the extension data
@@ -12,6 +27,16 @@ export function activate(context: vscode.ExtensionContext) {
     chance.locale = vscode.workspace.getConfiguration('vscmock').get('locale'); // Set locale
 
     // Initialize category list
+    let mockCategories: ICategory[] = [
+        basics, finance, location, misc, mobile, person, text, thing, web
+    ];
+
+    // Register them as commands
+    for (let cat of mockCategories) {
+        context.subscriptions.push(vscode.commands.registerCommand(`mock.${cat.getCategoryName()}`, () => {
+            execCmd(cat);
+        }));
+    }
 }
 
 /**
@@ -44,4 +69,13 @@ function appendToEditor(editor: vscode.TextEditor, text: string): void {
     editor.edit(editBuilder => {
         editBuilder.insert(position, text);
     });
+}
+
+/**
+ * Display option dropdown and run specified function based on category
+ * 
+ * @param {ICategory} cat - the category to display options from
+ */
+function execCmd(cat: ICategory): void {
+
 }
