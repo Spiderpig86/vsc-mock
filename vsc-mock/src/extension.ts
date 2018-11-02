@@ -1,10 +1,9 @@
 'use strict';
 import * as vscode from 'vscode';
-import * as chance from 'chance';
+import { Chance } from 'chance';
 import * as categories from './categories';
 
 import { ICategory } from './categories/category.interface';
-import { exec } from 'child_process';
 
 // Init options
 const basics = new categories.Basics();
@@ -17,6 +16,8 @@ const text = new categories.Text();
 const thing = new categories.Thing();
 const web = new categories.Web();
 
+const chance = Chance();
+
 /**
  * Initialize the extension data
  * 
@@ -24,7 +25,7 @@ const web = new categories.Web();
  * @param {vscode.ExtensionContext} context - vscode instance we are running from
  */
 export function activate(context: vscode.ExtensionContext) {
-    chance.locale = vscode.workspace.getConfiguration('vscmock').get('locale'); // Set locale
+    // chance.locale = vscode.workspace.getConfiguration('vscmock').get('locale'); // Set locale
 
     // Initialize category list
     let mockCategories: ICategory[] = [
@@ -53,7 +54,9 @@ export function deactivate() {}
  */
 function getEditor(): vscode.TextEditor {
     const editor = vscode.window.activeTextEditor;
-    if (!editor) return;
+    if (!editor) {
+        return;
+    }
 
     return editor;
 }
@@ -77,5 +80,22 @@ function appendToEditor(editor: vscode.TextEditor, text: string): void {
  * @param {ICategory} cat - the category to display options from
  */
 function execCmd(cat: ICategory): void {
+    vscode.window
+        .showQuickPick(cat.getTypes())
+        .then((selectedType) => {
+            const selected = unNullify(selectedType);
 
+            // Abort on empty
+            if (selected.length == 0) {
+                return;
+            }
+
+            const val = (chance as any)[selected](); // Cast to any to avoid missing definition error
+            appendToEditor(getEditor(), val);
+        }) ;
+}
+
+/* HELPERS */
+function unNullify(str: string | undefined): string {
+    return str || '';
 }
