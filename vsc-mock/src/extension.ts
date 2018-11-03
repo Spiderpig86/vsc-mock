@@ -8,7 +8,7 @@ import { ICategory } from './categories/category.interface';
 // Init options
 const basics = new categories.Basics();
 const finance = new categories.Finance();
-const location = new categories.Finance();
+const location = new categories.Location();
 const misc = new categories.Misc();
 const mobile = new categories.Mobile();
 const person = new categories.Person();
@@ -55,7 +55,7 @@ export function deactivate() {}
 function getEditor(): vscode.TextEditor {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
-        return;
+        throw new Error('VsCode editor instance not found.');
     }
 
     return editor;
@@ -67,7 +67,7 @@ function getEditor(): vscode.TextEditor {
  * @param editor - current editor instance
  * @param text - text to insert
  */
-function appendToEditor(editor: vscode.TextEditor, text: string): void {
+function appendToEditor(editor: vscode.TextEditor, text: any): void {
     const position = editor.selection.active; // Get cursor position
     editor.edit(editBuilder => {
         editBuilder.insert(position, text);
@@ -91,11 +91,21 @@ function execCmd(cat: ICategory): void {
             }
 
             const val = (chance as any)[selected](); // Cast to any to avoid missing definition error
-            appendToEditor(getEditor(), val);
+
+
+            appendToEditor(getEditor(), toString(val));
         }) ;
 }
 
 /* HELPERS */
 function unNullify(str: string | undefined): string {
     return str || '';
+}
+
+function toString(val: any): String {
+    if (typeof val === 'object') {
+        return JSON.stringify(val);
+    } else {
+        return new String(val);
+    }
 }

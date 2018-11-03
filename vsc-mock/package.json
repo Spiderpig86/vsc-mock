@@ -31,6 +31,10 @@
                 "title": "Mock: Basic Values"
             },
             {
+                "command": "mock.finance",
+                "title": "Mock: Finance"
+            },
+            {
                 "command": "mock.text",
                 "title": "Mock: Text"
             },
@@ -39,7 +43,7 @@
                 "title": "Mock: Person"
             },
             {
-                "command": "mock.Thing",
+                "command": "mock.thing",
                 "title": "Mock: Thing"
             },
             {
