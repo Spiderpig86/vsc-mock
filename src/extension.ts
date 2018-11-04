@@ -98,14 +98,23 @@ function execCmd(cat: ICategory): void {
 }
 
 /* HELPERS */
+
+/**
+ * Transforms undefined to an empty string if needed
+ * 
+ * @param {(string | undefined)} str - the value that we need to convert
+ * @returns {string} - transformed values
+ */
 function unNullify(str: string | undefined): string {
     return str || '';
 }
 
+/**
+ * Gets the string value from an object if needed
+ * 
+ * @param {*} val 
+ * @returns {String} 
+ */
 function toString(val: any): String {
-    if (typeof val === 'object') {
-        return JSON.stringify(val);
-    } else {
-        return new String(val);
-    }
+    return (typeof val === 'object') ? JSON.stringify(val) : new String(val);
 }
