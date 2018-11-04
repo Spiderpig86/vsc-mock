@@ -67,10 +67,14 @@ function getEditor(): vscode.TextEditor {
  * @param editor - current editor instance
  * @param text - text to insert
  */
-function appendToEditor(editor: vscode.TextEditor, text: any): void {
-    const position = editor.selection.active; // Get cursor position
+function appendToEditor(editor: vscode.TextEditor, val: string): void {
+    const { selections } = editor; // Get a list of cursor ranges
     editor.edit(editBuilder => {
-        editBuilder.insert(position, text);
+        selections.forEach(selection => {
+            const { start, end } = selection; // Get start and end selection positions
+            const range = new vscode.Range(start, end);
+            editBuilder.replace(range, val); // Replace any selection if present
+        });
     });
 }
 
