@@ -67,13 +67,13 @@ function getEditor(): vscode.TextEditor {
  * @param editor - current editor instance
  * @param text - text to insert
  */
-function appendToEditor(editor: vscode.TextEditor, val: string): void {
+function appendToEditor(editor: vscode.TextEditor, val: String): void {
     const { selections } = editor; // Get a list of cursor ranges
     editor.edit(editBuilder => {
         selections.forEach(selection => {
             const { start, end } = selection; // Get start and end selection positions
             const range = new vscode.Range(start, end);
-            editBuilder.replace(range, val); // Replace any selection if present
+            editBuilder.replace(range, val as string); // Replace any selection if present
         });
     });
 }
@@ -94,11 +94,22 @@ function execCmd(cat: ICategory): void {
                 return;
             }
 
-            const val = (chance as any)[selected](); // Cast to any to avoid missing definition error
+            if (selectedType === 'dice') {
+                handleOpts(cat, selectedType);
+                return;
+            }
 
+            const val = (chance as any)[selected](); // Cast to any to avoid missing definition error
 
             appendToEditor(getEditor(), toString(val));
         }) ;
+}
+
+function handleOpts(cat: ICategory, selectedType: string) {
+    vscode.window.showQuickPick((cat as categories.Misc).getDiceOpts()).then((diceOpt) => {
+        const val = (chance as any)[`d${diceOpt}`]();
+        appendToEditor(getEditor(), toString(val));
+    });
 }
 
 /* HELPERS */
