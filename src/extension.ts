@@ -105,11 +105,25 @@ function execCmd(cat: ICategory): void {
         }) ;
 }
 
-function handleOpts(cat: ICategory, selectedType: string) {
-    vscode.window.showQuickPick((cat as categories.Misc).getDiceOpts()).then((diceOpt) => {
-        const val = (chance as any)[`d${diceOpt}`]();
-        appendToEditor(getEditor(), toString(val));
-    });
+async function handleOpts(cat: ICategory, selectedType: string) {
+    switch (selectedType) {
+        case 'dice': {
+            const option = await vscode.window.showQuickPick((cat as categories.Misc).getDiceOpts());
+            const val = (chance as any)[`d${option}`]();
+            appendToEditor(getEditor(), toString(val));
+            break;
+        }
+        case 'rpg': {
+            const numDice = await vscode.window.showInputBox({ placeHolder: 'Enter number of die to roll' });
+            const maxVal = await vscode.window.showInputBox({ placeHolder: 'Enter max val for each die' });
+            const val1 = (chance as any).rpg(`${numDice}d${maxVal}`);
+            const val2 = (chance as any).rpg(`${numDice}d${maxVal}`, { sum: true });
+            appendToEditor(getEditor(), toString(val1));
+            appendToEditor(getEditor(), toString(val2));
+            break;
+        }
+
+    }
 }
 
 /* HELPERS */
