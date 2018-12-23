@@ -1,10 +1,10 @@
 'use strict';
 import * as vscode from 'vscode';
-import { Chance } from 'chance';
 import * as categories from './categories';
+import { Chance } from 'chance';
 
 import { ICategory } from './categories/category.interface';
-import { COMMAND_OPTS } from './consts/options';
+import { COMMAND_OPTS, displayPrompts } from './consts/options';
 
 // Init options
 const basics = new categories.Basics();
@@ -56,7 +56,7 @@ export function deactivate() {}
 function getEditor(): vscode.TextEditor {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
-        throw new Error('VsCode editor instance not found.');
+        throw new Error('VSCode editor instance not found.');
     }
 
     return editor;
@@ -99,7 +99,6 @@ function execCmd(cat: ICategory): void {
                 handleOpts(cat, selected);
             } else {
                 const val = (chance as any)[selected](); // Cast to any to avoid missing definition error
-
                 appendToEditor(getEditor(), toString(val));
             }
         }) ;
@@ -114,12 +113,13 @@ async function handleOpts(cat: ICategory, selectedType: string) {
             break;
         }
         case 'rpg': {
-            const numDice = await vscode.window.showInputBox({ placeHolder: 'Enter number of die to roll' });
-            const maxVal = await vscode.window.showInputBox({ placeHolder: 'Enter max val for each die' });
-            const val1 = (chance as any).rpg(`${numDice}d${maxVal}`);
-            const val2 = (chance as any).rpg(`${numDice}d${maxVal}`, { sum: true });
-            appendToEditor(getEditor(), toString(val1));
-            appendToEditor(getEditor(), toString(val2));
+            const values =  await displayPrompts([
+                'Enter number of die to roll',
+                'Enter max val for each die',
+                'Sum together values? (y/n)'
+            ]);
+            const val = (chance as any).rpg(`${values[0]}d${values[1]}`, { sum: values[2].toLowerCase() === 'y' });
+            appendToEditor(getEditor(), toString(val));
             break;
         }
 
@@ -134,7 +134,7 @@ async function handleOpts(cat: ICategory, selectedType: string) {
  * @param {(string | undefined)} str - the value that we need to convert
  * @returns {string} - transformed values
  */
-function unNullify(str: string | undefined): string {
+export function unNullify(str: string | undefined): string {
     return str || '';
 }
 
