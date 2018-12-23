@@ -4,6 +4,7 @@ import { Chance } from 'chance';
 import * as categories from './categories';
 
 import { ICategory } from './categories/category.interface';
+import { COMMAND_OPTS } from './consts/options';
 
 // Init options
 const basics = new categories.Basics();
@@ -94,14 +95,13 @@ function execCmd(cat: ICategory): void {
                 return;
             }
 
-            if (selectedType === 'dice') {
-                handleOpts(cat, selectedType);
-                return;
+            if (COMMAND_OPTS.indexOf(selected) > -1) {
+                handleOpts(cat, selected);
+            } else {
+                const val = (chance as any)[selected](); // Cast to any to avoid missing definition error
+
+                appendToEditor(getEditor(), toString(val));
             }
-
-            const val = (chance as any)[selected](); // Cast to any to avoid missing definition error
-
-            appendToEditor(getEditor(), toString(val));
         }) ;
 }
 
