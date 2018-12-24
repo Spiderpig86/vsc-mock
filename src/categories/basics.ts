@@ -8,13 +8,20 @@ export class Basics implements ICategory {
     public getTypes(): string[] {
         return [
             'bool',
-            'character', 
-            'floating', 
+            'boolargs',
+            'character',
+            'characterargs',
+            'floating',
+            'floatingargs',
             'integer', 
+            'integerargs',
             'letter', 
-            'natural', 
-            'prime', 
-            'string'
+            'natural',
+            'naturalargs',
+            'prime',
+            'primeargs',
+            'string',
+            'stringargs'
         ];
     }
 }

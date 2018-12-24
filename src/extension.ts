@@ -95,7 +95,7 @@ function execCmd(cat: ICategory): void {
                 return;
             }
 
-            if (COMMAND_OPTS.indexOf(selected) > -1) {
+            if (COMMAND_OPTS.indexOf(selected) > -1 || selected.substring(selected.length - 4, selected.length) === 'args') {
                 handleOpts(cat, selected);
             } else {
                 const val = (chance as any)[selected](); // Cast to any to avoid missing definition error
@@ -121,6 +121,9 @@ async function handleOpts(cat: ICategory, selectedType: string) {
             const val = (chance as any).rpg(`${values[0]}d${values[1]}`, { sum: values[2].toLowerCase() === 'y' });
             appendToEditor(getEditor(), toString(val));
             break;
+        }
+        default: {
+            console.log('No command found');
         }
 
     }
