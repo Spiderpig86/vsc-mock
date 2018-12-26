@@ -8,9 +8,12 @@ export class Text implements ICategory {
     public getTypes(): string[] {
         return [
             'paragraph',
+            'paragraphargs',
             'sentence',
+            'sentenceargs',
             'syllable',
-            'word'
+            'word',
+            'wordargs'
         ];
     }
 }
