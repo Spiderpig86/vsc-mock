@@ -8,10 +8,14 @@ export class Web implements ICategory {
     public getTypes(): string[] {
         return [
             'avatar',
+            '.avatar',
             'color',
+            '.color',
             'company',
             'domain',
+            '.domain',
             'email',
+            '.email',
             'fbid',
             'google_analytics',
             'hashtag',
@@ -19,9 +23,11 @@ export class Web implements ICategory {
             'ipv6',
             'klout',
             'profession',
+            '.profession',
             'tld',
             'twitter',
-            'url'
+            'url',
+            '.url'
         ];
     }
 }

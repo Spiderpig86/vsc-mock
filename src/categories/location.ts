@@ -8,21 +8,35 @@ export class Location implements ICategory {
     public getTypes(): string[] {
         return [
             'address',
+            '.address',
             'altitude',
+            '.altitude',
             'areacode',
             'city',
             'coordinates',
+            '.coordinates',
             'country',
+            '.country',
             'depth',
+            '.depth',
             'geohash',
+            '.geohash',
             'latitude',
+            '.latitude',
             'longitude',
+            '.longitude',
             'phone',
+            '.phone',
             'postal',
+            'postalcode',
             'province',
+            '.province',
             'state',
+            '.state',
             'street',
-            'zip'
+            '.street',
+            'zip',
+            '.zip',
         ];
     }
 }

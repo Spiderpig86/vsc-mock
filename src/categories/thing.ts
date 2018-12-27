@@ -7,7 +7,8 @@ export class Thing implements ICategory {
 
     public getTypes(): string[] {
         return [
-            'animal'
+            'animal',
+            '.animal'
         ];
     }
 }
