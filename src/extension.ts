@@ -95,7 +95,7 @@ function execCmd(cat: ICategory): void {
                 return;
             }
 
-            if (COMMAND_OPTS.indexOf(selected) > -1 || selected.substring(selected.length - 4, selected.length) === 'args') {
+            if (selected.charAt(0) === '.') {
                 handleOpts(cat, selected);
             } else {
                 const val = (chance as any)[selected](); // Cast to any to avoid missing definition error

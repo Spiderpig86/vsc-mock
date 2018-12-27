@@ -8,16 +8,26 @@ export class Person implements ICategory {
     public getTypes(): string[] {
         return [
             'age',
+            '.age',
             'birthday',
+            '.birthday',
             'cf',
+            '.cf',
             'cpf',
             'first',
+            '.first',
             'gender',
+            '.gender',
             'last',
+            '.last',
             'name',
+            '.name',
             'prefix',
+            '.prefix',
             'ssn',
-            'suffix'
+            '.ssn',
+            'suffix',
+            '.suffix'
         ];
     }
 }
