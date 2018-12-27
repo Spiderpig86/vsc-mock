@@ -8,13 +8,18 @@ export class Misc implements ICategory {
     public getTypes(): string[] {
         return [
             'coin',
-            'dice', // Need params
+            'dice',
             'guid',
+            '.guid',
             'hash',
+            '.hash',
             'normal',
+            '.normal',
             'radio',
-            'rpg', // Need params
-            'tv'
+            '.radio',
+            'rpg',
+            'tv',
+            '.tv'
         ];
     }
 
