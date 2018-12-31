@@ -4,7 +4,6 @@ import * as categories from './categories';
 import { Chance } from 'chance';
 
 import { ICategory } from './categories/category.interface';
-import { COMMAND_OPTS, displayPrompts } from './consts/options';
 
 // Init options
 const basics = new categories.Basics();
@@ -113,12 +112,12 @@ async function handleOpts(cat: ICategory, selectedType: string) {
             break;
         }
         case 'rpg': {
-            const values =  await displayPrompts([
-                'Enter number of die to roll',
-                'Enter max val for each die',
-                'Sum together values? (y/n)'
-            ]);
-            const val = (chance as any).rpg(`${values[0]}d${values[1]}`, { sum: values[2].toLowerCase() === 'y' });
+            const val = await misc.handleDice(chance);
+            appendToEditor(getEditor(), toString(val));
+            break;
+        }
+        case '.bool': {
+            const val = await basics.handleBool(chance);
             appendToEditor(getEditor(), toString(val));
             break;
         }
