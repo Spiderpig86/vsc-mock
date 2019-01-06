@@ -121,6 +121,26 @@ async function handleOpts(cat: ICategory, selectedType: string) {
             appendToEditor(getEditor(), toString(val));
             break;
         }
+        case '.character': {
+            const val = await basics.handleCharacter(chance);
+            appendToEditor(getEditor(), toString(val));
+            break;
+        }
+        case '.floating': {
+            break;
+        }
+        case '.integer': {
+            break;
+        }
+        case '.natural': {
+            break;
+        }
+        case '.prime': {
+            break;
+        }
+        case '.string': {
+            break;
+        }
         default: {
             console.log('No command found');
         }
