@@ -127,18 +127,28 @@ async function handleOpts(cat: ICategory, selectedType: string) {
             break;
         }
         case '.floating': {
+            const val = await basics.handleFloat(chance);
+            appendToEditor(getEditor(), toString(val));
             break;
         }
         case '.integer': {
+            const val = await basics.handleInt(chance);
+            appendToEditor(getEditor(), toString(val));
             break;
         }
         case '.natural': {
+            const val = await basics.handleNatural(chance);
+            appendToEditor(getEditor(), toString(val));
             break;
         }
         case '.prime': {
+            const val = await basics.handlePrime(chance);
+            appendToEditor(getEditor(), toString(val));
             break;
         }
         case '.string': {
+            const val = await basics.handleString(chance);
+            appendToEditor(getEditor(), toString(val));
             break;
         }
         default: {
