@@ -117,41 +117,41 @@ async function handleOpts(cat: ICategory, selectedType: string) {
             appendToEditor(getEditor(), toString(val));
             break;
         }
-        case '.bool': {
-            const val = await basics.handleBool(chance);
-            appendToEditor(getEditor(), toString(val));
-            break;
-        }
-        case '.character': {
-            const val = await basics.handleCharacter(chance);
-            appendToEditor(getEditor(), toString(val));
-            break;
-        }
-        case '.floating': {
-            const val = await basics.handleFloat(chance);
-            appendToEditor(getEditor(), toString(val));
-            break;
-        }
-        case '.integer': {
-            const val = await basics.handleInt(chance);
-            appendToEditor(getEditor(), toString(val));
-            break;
-        }
-        case '.natural': {
-            const val = await basics.handleNatural(chance);
-            appendToEditor(getEditor(), toString(val));
-            break;
-        }
-        case '.prime': {
-            const val = await basics.handlePrime(chance);
-            appendToEditor(getEditor(), toString(val));
-            break;
-        }
-        case '.string': {
-            const val = await basics.handleString(chance);
-            appendToEditor(getEditor(), toString(val));
-            break;
-        }
+        // case '.bool': {
+        //     const val = await basics.handleBool(chance);
+        //     appendToEditor(getEditor(), toString(val));
+        //     break;
+        // }
+        // case '.character': {
+        //     const val = await basics.handleCharacter(chance);
+        //     appendToEditor(getEditor(), toString(val));
+        //     break;
+        // }
+        // case '.floating': {
+        //     const val = await basics.handleFloat(chance);
+        //     appendToEditor(getEditor(), toString(val));
+        //     break;
+        // }
+        // case '.integer': {
+        //     const val = await basics.handleInt(chance);
+        //     appendToEditor(getEditor(), toString(val));
+        //     break;
+        // }
+        // case '.natural': {
+        //     const val = await basics.handleNatural(chance);
+        //     appendToEditor(getEditor(), toString(val));
+        //     break;
+        // }
+        // case '.prime': {
+        //     const val = await basics.handlePrime(chance);
+        //     appendToEditor(getEditor(), toString(val));
+        //     break;
+        // }
+        // case '.string': {
+        //     const val = await basics.handleString(chance);
+        //     appendToEditor(getEditor(), toString(val));
+        //     break;
+        // }
         default: {
             await findHandlers(selectedType);
         }
@@ -162,6 +162,7 @@ async function handleOpts(cat: ICategory, selectedType: string) {
 async function findHandlers(command: string): Promise<void> {
     // Conditions
     let val = '';
+    console.log(basics.getOptCommands().some(cmd => cmd === command))
     if (basics.getOptCommands().some(cmd => cmd === command)) {
         val = await basics.execHandlers(command);
     } else if (finance.getOptCommands().some(cmd => cmd === command)) {

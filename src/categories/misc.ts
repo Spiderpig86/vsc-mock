@@ -1,7 +1,15 @@
+import { Chance } from 'chance';
 import { ICategory } from './category.interface';
 import { displayPrompts } from '../consts/options';
 
 export class Misc implements ICategory {
+
+    private chance: any;
+
+    constructor() {
+        this.chance = Chance();
+    }
+
     public getCategoryName(): string {
         return 'misc';
     }

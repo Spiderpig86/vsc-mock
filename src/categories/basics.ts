@@ -1,9 +1,15 @@
-import { Chance as chance } from 'chance';
+import { Chance } from 'chance';
 
 import { ICategory } from './category.interface';
 import { displayPrompts } from '../consts/options';
 
 export class Basics implements ICategory {
+    private chance: any;
+
+    constructor() {
+        this.chance = Chance();
+    }
+
     public getCategoryName(): string {
         return 'basics';
     }
@@ -33,27 +39,28 @@ export class Basics implements ICategory {
     }
 
     public async execHandlers(command: string): Promise<any> {
+        console.log(command);
         switch (command) {
             case '.bool': {
-                return await this.handleBool(chance);
+                return await this.handleBool(this.chance);
             }
             case '.character': {
-                return await this.handleCharacter(chance);
+                return await this.handleCharacter(this.chance);
             }
             case '.floating': {
-                return await this.handleFloat(chance);
+                return await this.handleFloat(this.chance);
             }
             case '.integer': {
-                return await this.handleInt(chance);
+                return await this.handleInt(this.chance);
             }
             case '.natural': {
-                return await this.handleNatural(chance);
+                return await this.handleNatural(this.chance);
             }
             case '.prime': {
-                return await this.handlePrime(chance);
+                return await this.handlePrime(this.chance);
             }
             case '.string': {
-                return await this.handleString(chance);
+                return await this.handleString(this.chance);
             }
             default: {
                 console.log('No command found');

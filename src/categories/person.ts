@@ -1,6 +1,14 @@
+import { Chance } from 'chance';
 import { ICategory } from './category.interface';
 
 export class Person implements ICategory {
+
+    private chance: any;
+
+    constructor() {
+        this.chance = Chance();
+    }
+
     public getCategoryName(): string {
         return 'person';
     }
