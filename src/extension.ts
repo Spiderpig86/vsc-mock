@@ -14,6 +14,7 @@ const mobile = new categories.Mobile();
 const person = new categories.Person();
 const text = new categories.Text();
 const thing = new categories.Thing();
+const time = new categories.Time();
 const web = new categories.Web();
 
 const chance = Chance();
@@ -156,6 +157,34 @@ async function handleOpts(cat: ICategory, selectedType: string) {
         }
 
     }
+}
+
+async function findHandlers(command: string): Promise<void> {
+    // Conditions
+    let val = '';
+    if (basics.getOptCommands().some(cmd => cmd === command)) {
+        val = await basics.execHandlers(command);
+    } else if (finance.getOptCommands().some(cmd => cmd === command)) {
+        val = await finance.execHandlers(command);
+    } else if (location.getOptCommands().some(cmd => cmd === command)) {
+        val = await location.execHandlers(command);
+    } else if (misc.getOptCommands().some(cmd => cmd === command)) {
+        val = await misc.execHandlers(command);
+    } else if (mobile.getOptCommands().some(cmd => cmd === command)) {
+        val = await mobile.execHandlers(command);
+    } else if (person.getOptCommands().some(cmd => cmd === command)) {
+        val = await person.execHandlers(command);
+    } else if (text.getOptCommands().some(cmd => cmd === command)) {
+        val = await text.execHandlers(command);
+    } else if (thing.getOptCommands().some(cmd => cmd === command)) {
+        val = await thing.execHandlers(command);
+    } else if (time.getOptCommands().some(cmd => cmd === command)) {
+        val = await time.execHandlers(command);
+    } else if (web.getOptCommands().some(cmd => cmd === command)) {
+        val = await web.execHandlers(command);
+    }
+
+    appendToEditor(getEditor(), toString(val));
 }
 
 /* HELPERS */

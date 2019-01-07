@@ -24,4 +24,8 @@ export class Finance implements ICategory {
             'exp_year'
         ]
     }
+    
+    public getOptCommands(): string[] {
+        return this.getTypes().filter(cmd => cmd[0] === '.');
+    }
 }

@@ -30,4 +30,12 @@ export class Web implements ICategory {
             '.url'
         ];
     }
+
+    public getOptCommands(): string[] {
+        return this.getTypes().filter(cmd => cmd[0] === '.');
+    }
+
+    public execHandlers(command: string): Promise<any> {
+
+    }
 }

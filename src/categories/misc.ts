@@ -24,6 +24,14 @@ export class Misc implements ICategory {
         ];
     }
 
+    public getOptCommands(): string[] {
+        return this.getTypes().filter(cmd => cmd[0] === '.');
+    }
+
+    public execHandlers(command: string): Promise<any> {
+
+    }
+
     /* Custom options */
     public getDiceOpts(): string[] {
         return [

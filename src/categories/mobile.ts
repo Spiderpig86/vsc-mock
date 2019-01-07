@@ -14,4 +14,12 @@ export class Mobile implements ICategory {
             'wp8_anid2'
         ];
     }
+
+    public getOptCommands(): string[] {
+        return this.getTypes().filter(cmd => cmd[0] === '.');
+    }
+
+    public execHandlers(command: string): Promise<any> {
+
+    }
 }

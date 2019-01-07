@@ -6,4 +6,5 @@ export { Mobile } from './mobile';
 export { Person } from './person';
 export { Text } from './text';
 export { Thing } from './thing';
+export { Time } from './time';
 export { Web } from './web';

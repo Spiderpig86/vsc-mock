@@ -1,3 +1,5 @@
+import { Chance as chance } from 'chance';
+
 import { ICategory } from './category.interface';
 import { displayPrompts } from '../consts/options';
 
@@ -24,6 +26,40 @@ export class Basics implements ICategory {
             'string',
             '.string'
         ];
+    }
+
+    public getOptCommands(): string[] {
+        return this.getTypes().filter(cmd => cmd[0] === '.');
+    }
+
+    public async execHandlers(command: string): Promise<any> {
+        switch (command) {
+            case '.bool': {
+                return await this.handleBool(chance);
+            }
+            case '.character': {
+                return await this.handleCharacter(chance);
+            }
+            case '.floating': {
+                return await this.handleFloat(chance);
+            }
+            case '.integer': {
+                return await this.handleInt(chance);
+            }
+            case '.natural': {
+                return await this.handleNatural(chance);
+            }
+            case '.prime': {
+                return await this.handlePrime(chance);
+            }
+            case '.string': {
+                return await this.handleString(chance);
+            }
+            default: {
+                console.log('No command found');
+                return null;
+            }
+        }
     }
 
     /* Functions for handling options */
