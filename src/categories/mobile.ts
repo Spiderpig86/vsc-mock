@@ -19,7 +19,7 @@ export class Mobile implements ICategory {
         return this.getTypes().filter(cmd => cmd[0] === '.');
     }
 
-    public execHandlers(command: string): Promise<any> {
+    public async execHandlers(command: string): Promise<any> {
 
     }
 }

@@ -28,4 +28,8 @@ export class Finance implements ICategory {
     public getOptCommands(): string[] {
         return this.getTypes().filter(cmd => cmd[0] === '.');
     }
+
+    public async execHandlers(command: string): Promise<any> {
+
+    }
 }

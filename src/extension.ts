@@ -153,7 +153,7 @@ async function handleOpts(cat: ICategory, selectedType: string) {
             break;
         }
         default: {
-            console.log('No command found');
+            await findHandlers(selectedType);
         }
 
     }
