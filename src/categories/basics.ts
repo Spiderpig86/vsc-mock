@@ -39,7 +39,6 @@ export class Basics implements ICategory {
     }
 
     public async execHandlers(command: string): Promise<any> {
-        console.log(command);
         switch (command) {
             case '.bool': {
                 return await this.handleBool(this.chance);
