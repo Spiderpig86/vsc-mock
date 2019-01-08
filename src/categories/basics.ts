@@ -80,7 +80,7 @@ export class Basics implements ICategory {
     public async handleCharacter(chance: any): Promise<any> {
         const values = await displayPrompts([
             'Enter character pool (eg: \'abcde\', blank for all)',
-            'Alphanmeric only? (y/n)',
+            'Alphanumeric only? (y/n)',
             'Casing? (upper/lower/blank for default)',
             'Symbols only? (y/n)'
         ]);
