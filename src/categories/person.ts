@@ -48,34 +48,34 @@ export class Person implements ICategory {
     public async execHandlers(command: string): Promise<any> {
         switch (command) {
             case '.age': {
-                return await this.handleAge(this.chance);
+                return await this.handleAge();
             }
             case '.birthday': {
-                return await this.handleBirthday(this.chance);
+                return await this.handleBirthday();
             }
             case '.cf': {
-                return await this.handleCf(this.chance);
+                return await this.handleCf();
             }
             case '.first': {
-                return await this.handleFirst(this.chance);
+                return await this.handleFirst();
             }
             case '.gender': {
-                return await this.handleGender(this.chance);
+                return await this.handleGender();
             }
             case '.last': {
-                return await this.handleLast(this.chance);
+                return await this.handleLast();
             }
             case '.name': {
-                return await this.handleName(this.chance);
+                return await this.handleName();
             }
             case '.prefix': {
-                return await this.handlePrefix(this.chance);
+                return await this.handlePrefix();
             }
             case '.ssn': {
-                return await this.handleSsn(this.chance);
+                return await this.handleSsn();
             }
             case '.suffix': {
-                return await this.handleSuffix(this.chance);
+                return await this.handleSuffix();
             }
             default: {
                 console.log('No command found');
@@ -85,7 +85,7 @@ export class Person implements ICategory {
     }
 
     /* Custom functions */
-    public async handleAge(command: string): Promise<any> {
+    public async handleAge(): Promise<any> {
         const values = await displayPrompts([
             'Enter age type (child/teen/adult/senior/blank)'
         ]);
@@ -95,7 +95,7 @@ export class Person implements ICategory {
         return val;
     }
 
-    public async handleBirthday(command: string): Promise<any> {
+    public async handleBirthday(): Promise<any> {
         const values = await displayPrompts([
             'Enter age type (child/teen/adult/senior/blank)',
             'Use string format? (y/n)',
@@ -113,7 +113,7 @@ export class Person implements ICategory {
         return val;
     }
 
-    public async handleCf(command: string): Promise<any> {
+    public async handleCf(): Promise<any> {
         const values = await displayPrompts([
             'Enter first name (optional)',
             'Enter last name (optional)',
@@ -129,7 +129,7 @@ export class Person implements ICategory {
         return val;
     }
 
-    public async handleFirst(command: string): Promise<any> {
+    public async handleFirst(): Promise<any> {
         const values = await displayPrompts([
             'Enter nationality (us/it)',
             'Enter gender (male/female)'
@@ -141,7 +141,7 @@ export class Person implements ICategory {
         return val;
     }
 
-    public async handleGender(command: string): Promise<any> {
+    public async handleGender(): Promise<any> {
         const values = await displayPrompts([
             'Enter extra genders (comma separated)'
         ]);
@@ -151,7 +151,7 @@ export class Person implements ICategory {
         return val;
     }
 
-    public async handleLast(command: string): Promise<any> {
+    public async handleLast(): Promise<any> {
         const values = await displayPrompts([
             'Enter nationality (us/it)'
         ]);
@@ -161,7 +161,7 @@ export class Person implements ICategory {
         return val;
     }
 
-    public async handleName(command: string): Promise<any> {
+    public async handleName(): Promise<any> {
         const values = await displayPrompts([
             'Use middle name? (y/n)',
             'Use middle initial? (y/n)',
@@ -177,7 +177,7 @@ export class Person implements ICategory {
         return val;
     }
 
-    public async handlePrefix(command: string): Promise<any> {
+    public async handlePrefix(): Promise<any> {
         const values = await displayPrompts([
             'Use full prefix? (y/n)',
             'Enter gender (male/female)'
@@ -189,7 +189,7 @@ export class Person implements ICategory {
         return val;
     }
 
-    public async handleSsn(command: string): Promise<any> {
+    public async handleSsn(): Promise<any> {
         const values = await displayPrompts([
             'Only show 4 digits? (y/n)',
             'Show dashes? (y/n)',
@@ -201,7 +201,7 @@ export class Person implements ICategory {
         return val;
     }
 
-    public async handleSuffix(command: string): Promise<any> {
+    public async handleSuffix(): Promise<any> {
         const values = await displayPrompts([
             'Use full suffix? (y/n)'
         ]);
