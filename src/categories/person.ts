@@ -161,7 +161,7 @@ export class Person implements ICategory {
         return val;
     }
 
-    public async handleCf(command: string): Promise<any> {
+    public async handleName(command: string): Promise<any> {
         const values = await displayPrompts([
             'Use middle name? (y/n)',
             'Use middle initial? (y/n)',
