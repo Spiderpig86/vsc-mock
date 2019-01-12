@@ -100,4 +100,48 @@ export class Web implements ICategory {
         });
         return val;
     }
+
+    public async handleDomain(): Promise<any> {
+        const values = await displayPrompts([
+            'Specify top level domain (without period)',
+        ]);
+        const val = this.chance.domain({
+            ...values[0] && { tld: values[0] }
+        });
+        return val;
+    }
+
+    public async handleEmail(): Promise<any> {
+        const values = await displayPrompts([
+            'Specify a domain for the email (eg. example.com)',
+        ]);
+        const val = this.chance.color({
+            ...values[0] && { domain: values[0] }
+        });
+        return val;
+    }
+
+    public async handleProfession(): Promise<any> {
+        const values = await displayPrompts([
+            'Include rank for position? (y/n)',
+        ]);
+        const val = this.chance.profession({
+            ...values[0] && { tld: values[0].toLowerCase() === 'y' }
+        });
+        return val;
+    }
+
+    public async handleUrl(): Promise<any> {
+        const values = await displayPrompts([
+            'Enter domain for the url (eg. www.example.com)',
+            'Enter url path (eg. images/test)',
+            'Enter extensions (comma separated)',
+        ]);
+        const val = this.chance.url({
+            ...values[0] && { domain: values[0] },
+            ...values[1] && { path: values[1] },
+            ...values[2] && { extensions: values[2].split(',') }
+        });
+        return val;
+    }
 }
