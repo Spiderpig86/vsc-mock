@@ -44,8 +44,8 @@ export class Thing implements ICategory {
         ]);
         const val = this.chance.birthday({
             ...values[0] && { type: values[0] },
-            ...values[1] === 'y' && { string: true },
-            ...values[2] === 'y' && { american: true },
+            ...values[1] && { string: values[1].toLowerCase() === 'y' },
+            ...values[2] && { american: values[2].toLowerCase() === 'y' },
             ...values[3] && { min: values[3] },
             ...values[4] && { max: values[4] }
         });

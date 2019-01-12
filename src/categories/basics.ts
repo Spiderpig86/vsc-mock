@@ -88,9 +88,9 @@ export class Basics implements ICategory {
         // Build options
         const val = chance.character({
             ...values[0] && { pool: values[0] },
-            ...values[1] === 'y' && { alpha: true },
+            ...values[1] && { alpha: values[1].toLowerCase() === 'y' },
             ...values[2] && { casing: values[2] },
-            ...values[3] === 'y' && { symbols: true }
+            ...values[3] && { symbols: values[3].toLowerCase() === 'y' }
         });
         return val;
     }

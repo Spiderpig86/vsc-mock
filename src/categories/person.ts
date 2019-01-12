@@ -105,8 +105,8 @@ export class Person implements ICategory {
         ]);
         const val = this.chance.birthday({
             ...values[0] && { type: values[0] },
-            ...values[1] === 'y' && { string: true },
-            ...values[2] === 'y' && { american: true },
+            ...values[1] && { string: values[1].toLowerCase() === 'y' },
+            ...values[2] && { american: values[2].toLowerCase() === 'y' },
             ...values[3] && { min: values[3] },
             ...values[4] && { max: values[4] }
         });
@@ -183,7 +183,7 @@ export class Person implements ICategory {
             'Enter gender (male/female)'
         ]);
         const val = this.chance.prefix({
-            ...values[0] === 'y' && { full: true },
+            ...values[0] && { full: values[0].toLowerCase() === 'y' },
             ...values[1] && { gender: values[1] },
         });
         return val;
@@ -195,8 +195,8 @@ export class Person implements ICategory {
             'Show dashes? (y/n)',
         ]);
         const val = this.chance.ssn({
-            ...values[0] === 'y' && { ssnFour: true },
-            ...values[1] === 'y' && { dashes: true }
+            ...values[0] && { ssnFour: values[0].toLowerCase() === 'y' },
+            ...values[1] && { dashes: values[1].toLowerCase() === 'y' }
         });
         return val;
     }
@@ -206,7 +206,7 @@ export class Person implements ICategory {
             'Use full suffix? (y/n)'
         ]);
         const val = this.chance.suffix({
-            ...values[0] === 'y' && { full: true }
+            ...values[0] && { full: values[0].toLowerCase() === 'y' }
         });
         return val;
     }
