@@ -30,7 +30,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     // Initialize category list
     let mockCategories: ICategory[] = [
-        basics, finance, location, misc, mobile, person, text, thing, web
+        basics, finance, location, misc, mobile, person, text, time, thing, web
     ];
 
     // Register them as commands
