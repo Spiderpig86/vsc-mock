@@ -113,7 +113,7 @@ async function handleOpts(cat: ICategory, selectedType: string) {
             break;
         }
         case 'rpg': {
-            const val = await misc.handleDice(chance);
+            const val = await misc.handleRpg();
             appendToEditor(getEditor(), toString(val));
             break;
         }
