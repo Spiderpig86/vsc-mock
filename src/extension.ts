@@ -127,7 +127,6 @@ async function handleOpts(cat: ICategory, selectedType: string) {
 async function findHandlers(command: string): Promise<void> {
     // Conditions
     let val = '';
-    console.log(basics.getOptCommands().some(cmd => cmd === command))
     if (basics.getOptCommands().some(cmd => cmd === command)) {
         val = await basics.execHandlers(command);
     } else if (finance.getOptCommands().some(cmd => cmd === command)) {
