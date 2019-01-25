@@ -51,19 +51,19 @@ export class Web implements ICategory {
                 return await this.handleAvatar();
             }
             case '.color': {
-                return await this.handleParagraph();
+                return await this.handleColor();
             }
             case '.domain': {
-                return await this.handleParagraph();
+                return await this.handleDomain();
             }
             case '.email': {
-                return await this.handleParagraph();
+                return await this.handleEmail();
             }
             case '.profession': {
-                return await this.handleParagraph();
+                return await this.handleProfession();
             }
             case '.url': {
-                return await this.handleParagraph();
+                return await this.handleUrl();
             }
             default: {
                 console.log('No command found');
