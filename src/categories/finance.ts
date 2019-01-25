@@ -1,4 +1,5 @@
 import { Chance } from 'chance';
+import * as vscode from 'vscode';
 
 import { ICategory } from './category.interface';
 import { displayPrompts } from '../consts/options';
@@ -60,7 +61,7 @@ export class Finance implements ICategory {
                 return await this.handleExpMonth();
             }
             default: {
-                console.log('No command found');
+                vscode.window.showErrorMessage('Invalid command entered');
                 return null;
             }
         }

@@ -1,4 +1,5 @@
 import { Chance } from 'chance';
+import * as vscode from 'vscode';
 
 import { ICategory } from './category.interface';
 import { displayPrompts } from '../consts/options';
@@ -54,7 +55,7 @@ export class Time implements ICategory {
                 return await this.handleYear();
             }
             default: {
-                console.log('No command found');
+                vscode.window.showErrorMessage('Invalid command entered');
                 return null;
             }
         }

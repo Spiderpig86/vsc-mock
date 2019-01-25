@@ -1,6 +1,7 @@
 import { Chance } from 'chance';
-import { ICategory } from './category.interface';
+import * as vscode from 'vscode';
 
+import { ICategory } from './category.interface';
 import { displayPrompts } from '../consts/options';
 
 export class Web implements ICategory {
@@ -66,7 +67,7 @@ export class Web implements ICategory {
                 return await this.handleUrl();
             }
             default: {
-                console.log('No command found');
+                vscode.window.showErrorMessage('Invalid command entered');
                 return null;
             }
         }

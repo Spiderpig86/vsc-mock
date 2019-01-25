@@ -1,4 +1,6 @@
 import { Chance } from 'chance';
+import * as vscode from 'vscode';
+
 import { ICategory } from './category.interface';
 import { displayPrompts } from '../consts/options';
 
@@ -39,24 +41,23 @@ export class Misc implements ICategory {
     public async execHandlers(command: string): Promise<any> {
         switch (command) {
             case '.guid': {
-
-                break;
+                return await this.handleGuid();
             }
             case '.hash': {
-
-                break;
+                return await this.handleHash();
             }
             case '.normal': {
-
-                break;
+                return await this.handleNormal();
             }
             case '.radio': {
-
-                break;
+                return await this.handleRadio();
             }
             case '.tv': {
-
-                break;
+                return await this.handleTv();
+            }
+            default: {
+                vscode.window.showErrorMessage('Invalid command entered');
+                return null;
             }
         }
     }
@@ -81,6 +82,18 @@ export class Misc implements ICategory {
         ]);
         const val = this.chance.guid({
             ...values[0] && { version: Number(values[0]) }
+        });
+        return val;
+    }
+
+    public async handleHash(): Promise<any> {
+        const values =  await displayPrompts([
+            'Enter length of hash (eg. 25)',
+            'Enter hash casing (upper/lower)'
+        ]);
+        const val = this.chance.guid({
+            ...values[0] && { version: Number(values[0]) },
+            ...values[1] && { casing: values[1] }
         });
         return val;
     }

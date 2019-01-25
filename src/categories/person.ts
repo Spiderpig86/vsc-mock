@@ -1,4 +1,5 @@
 import { Chance } from 'chance';
+import * as vscode from 'vscode';
 
 import { ICategory } from './category.interface';
 import { displayPrompts } from '../consts/options';
@@ -78,7 +79,7 @@ export class Person implements ICategory {
                 return await this.handleSuffix();
             }
             default: {
-                console.log('No command found');
+                vscode.window.showErrorMessage('Invalid command entered');
                 return null;
             }
         }

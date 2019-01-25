@@ -1,4 +1,5 @@
 import { Chance } from 'chance';
+import * as vscode from 'vscode';
 
 import { ICategory } from './category.interface';
 import { displayPrompts } from '../consts/options';
@@ -62,7 +63,7 @@ export class Basics implements ICategory {
                 return await this.handleString(this.chance);
             }
             default: {
-                console.log('No command found');
+                vscode.window.showErrorMessage('Invalid command entered');
                 return null;
             }
         }
