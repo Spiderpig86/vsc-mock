@@ -41,7 +41,7 @@ export class Thing implements ICategory {
 
     public async handleAnimal(): Promise<any> {
         const values = await displayPrompts([
-            'Enter animal type (zoo/blank)'
+            'Enter animal type (zoo/ocean/desert/grassland/forest/farm/pet/blank)'
         ]);
         const val = this.chance.animal({
             ...values[0] && { type: values[0] },
