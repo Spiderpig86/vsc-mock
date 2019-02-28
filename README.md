@@ -4,7 +4,7 @@
 
 ## Features
 * vsc-mock allows you to generate data for:
-  * basic values (numbers/letters/vvalues)
+  * basic values (numbers/letters/values)
   * finance
   * location
   * misc
