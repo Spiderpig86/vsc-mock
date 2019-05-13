@@ -5,6 +5,15 @@
     "version": "0.0.1",
     "homepage": "https://github.com/Spiderpig86/vsc-mock",
     "publisher": "Spiderpig86",
+    "icon": "images/logo.png",
+    "bugs": {
+        "url": "https://github.com/Spiderpig86/vscode-mock/issues",
+        "email": "slim679975@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Spiderpig86/vsc-mock"
+    },
     "engines": {
         "vscode": "^1.27.2"
     },
