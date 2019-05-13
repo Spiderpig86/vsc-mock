@@ -116,7 +116,7 @@ export class Web implements ICategory {
         const values = await displayPrompts([
             'Specify a domain for the email (eg. example.com)',
         ]);
-        const val = this.chance.color({
+        const val = this.chance.email({
             ...values[0] && { domain: values[0] }
         });
         return val;
