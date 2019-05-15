@@ -17,7 +17,9 @@
   * web
 
 ## Installation
-* Coming soon...
+1. Type <kbd>cmd</kbd>+<kbd>shift</kbd>+<kbd>p</kbd> to open up the command palette.
+2. Choose `Extensions: Install Extension`.
+3. Search `vscmock` and install.
 
 ## How it Works
 ![vscmock](https://raw.githubusercontent.com/Spiderpig86/vsc-mock/master/images/vscmock.gif)
