@@ -72,10 +72,6 @@
                 "title": "Mock: Time"
             },
             {
-                "command": "mock.Finance",
-                "title": "Mock: Finance"
-            },
-            {
                 "command": "mock.misc",
                 "title": "Mock: Misc"
             }
