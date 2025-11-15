@@ -21,16 +21,7 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:mock.basics",
-        "onCommand:mock.text",
-        "onCommand:mock.person",
-        "onCommand:mock.thing",
-        "onCommand:mock.mobile",
-        "onCommand:mock.web",
-        "onCommand:mock.location",
-        "onCommand:mock.time",
-        "onCommand:mock.finance",
-        "onCommand:mock.misc"
+        "*"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -70,10 +61,6 @@
             {
                 "command": "mock.time",
                 "title": "Mock: Time"
-            },
-            {
-                "command": "mock.Finance",
-                "title": "Mock: Finance"
             },
             {
                 "command": "mock.misc",
