@@ -2,7 +2,7 @@
     "name": "vsc-mock",
     "displayName": "vsc-mock",
     "description": "Generate mock form data on the fly.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "homepage": "https://github.com/Spiderpig86/vsc-mock",
     "publisher": "Spiderpig86",
     "icon": "images/logo.png",
